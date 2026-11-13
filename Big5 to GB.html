@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0028)http://www.j4.com.tw/big-gb/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="description" content="²���c�B�c��²�B�c²Unicode/UTF8����">
+	<title>Big5 to GB :: ²�c�ഫ</title>
+</head>
+
+<body>
+<div align="center">
+<img src="./Big5 to GB_files/bn01.gif" width="229" height="85" border="0">
+	<table border="0" width="600" id="table1">
+		
+		<form name="myForm" onsubmit="return false"></form>
+		<tbody><tr>
+			<td align="center"><textarea rows="7" name="S1" cols="60" style="font-size:12pt"></textarea><br>
+	TO�G
+	  <input type="button" value="CN Unicode" name="B1" onclick="BIGtoGB=0;toCode()">
+	  <input type="button" value="TW Unicode" name="B2" onclick="BIGtoGB=1;toCode()">
+	  <input type="button" value="CN GB" name="B3" onclick="BIGtoGB=2;toCode()"><input type="button" value="TW BIG" name="B4" onclick="BIGtoGB=3;toCode()">
+	  &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="C1" value="ON">HTML<br>
+	<textarea rows="7" name="S2" cols="60" style="font-size:12pt"></textarea></td>
+		</tr>
+		<tr>
+			<td align="center"><script language="javascript" src="./Big5 to GB_files/npo.js.下載"></script></td>
+		</tr>
+	</tbody></table>
+</div>
+<div id="p1" style="display:none"></div>
+<script language="javascript" src="./Big5 to GB_files/GB2312TOBIG5.js.下載"></script>
+<script language="javascript" src="./Big5 to GB_files/GBCodeUnicode.js.下載"></script>
+<script language="javascript" src="./Big5 to GB_files/GB2312TOBIGGB.js.下載"></script>
+<script language="javascript" src="./Big5 to GB_files/BIG5TOGB2312.js.下載"></script>
+<script language="javascript" src="./Big5 to GB_files/BIGCodeUnicode.js.下載"></script>
+<script language="javascript" src="./Big5 to GB_files/BIG5TOGBBIG.js.下載"></script>
+<script language="javascript"><!--
+//V0.2
+var BIGtoGB = 0;
+
+function toCode(){
+	var TempStr = "";
+	var TempStr1 = "";
+	var TempStrWord = "";
+	var TempWordMath = 0;
+	var TempWordHex = new Array();
+	if(document.myForm.C1.checked){
+		document.getElementById("p1").innerHTML = document.myForm.S1.value;
+		TempStrWord = document.getElementById("p1").innerText;
+	}else{
+		TempStrWord = document.myForm.S1.value;
+	}
+	for(i=0;i<TempStrWord.length;i++){
+		TempStr1 = TempStrWord.charAt(i);
+		TempWordMath = TempStr1.charCodeAt(0);
+		switch(BIGtoGB){
+		case 0:
+			if(!toGB[TempWordMath]){
+				TempStr += TempStr1;
+			}else{
+				TempStr += String.fromCharCode(toGB[TempWordMath]);
+			}
+			break;
+		case 1:
+			if(!toBIG[TempWordMath]){
+				TempStr += TempStr1;
+			}else{
+				TempStr += String.fromCharCode(toBIG[TempWordMath]);
+			}
+			break;
+		case 2:
+			if(!toGB2[TempWordMath]){
+				TempStr += TempStr1;
+			}else{
+				TempStr += toGB2[TempWordMath];
+			}
+			break;
+		case 3:
+			if(!toBIG2[TempWordMath]){
+				TempStr += TempStr1;
+			}else{
+				TempStr += toBIG2[TempWordMath];
+			}
+			break;
+		}
+	}
+	document.myForm.S2.value = TempStr;
+}
+//--></script> 
+
+<div align="center"><a href="http://www.j4.com.tw/">�^����</a></div>
+
+
+</body></html>
