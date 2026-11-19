@@ -1,93 +1,85 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta http-equiv="description" content="²���c�B�c��²�B�c²Unicode/UTF8����">
-	<title>Big5 to GB :: ²�c�ഫ</title>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>Big5 to GB :: 繁簡轉換</title>
 </head>
-
 <body>
-<div align="center">
-<img src="./Big to GB/bn01.gif" width="229" height="85" border="0">
-	<table border="0" width="600" id="table1">
-		
-		<form name="myForm" onsubmit="return false"></form>
-		<tbody><tr>
-			<td align="center"><textarea rows="7" name="S1" cols="60" style="font-size:12pt"></textarea><br>
-	TO�G
-	  <input type="button" value="CN Unicode" name="B1" onclick="BIGtoGB=0;toCode()">
-	  <input type="button" value="TW Unicode" name="B2" onclick="BIGtoGB=1;toCode()">
-	  <input type="button" value="CN GB" name="B3" onclick="BIGtoGB=2;toCode()"><input type="button" value="TW BIG" name="B4" onclick="BIGtoGB=3;toCode()">
-	  &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="C1" value="ON">HTML<br>
-	<textarea rows="7" name="S2" cols="60" style="font-size:12pt"></textarea></td>
-		</tr>
-		<tr>
-			<td align="center"><script language="javascript" src="./Big5 to GB_files/npo.js.下載"></script></td>
-		</tr>
-	</tbody></table>
-</div>
-<div id="p1" style="display:none"></div>
-<script language="javascript" src="./Big5 to GB_files/GB2312TOBIG5.js.下載"></script>
-<script language="javascript" src="./Big5 to GB_files/GBCodeUnicode.js.下載"></script>
-<script language="javascript" src="./Big5 to GB_files/GB2312TOBIGGB.js.下載"></script>
-<script language="javascript" src="./Big5 to GB_files/BIG5TOGB2312.js.下載"></script>
-<script language="javascript" src="./Big5 to GB_files/BIGCodeUnicode.js.下載"></script>
-<script language="javascript" src="./Big5 to GB_files/BIG5TOGBBIG.js.下載"></script>
-<script language="javascript"><!--
-//V0.2
-var BIGtoGB = 0;
+  <div align="center">
+    <form id="myForm" onsubmit="return false;">
+      <table border="0" width="600" id="table1">
+        <tbody>
+          <tr>
+            <td align="center">
+              <textarea rows="7" id="S1" name="S1" cols="60" style="font-size:12pt"></textarea><br>
+              TO：
+              <input type="button" value="CN Unicode" name="B1" onclick="BIGtoGB=0;toCode()">
+              <input type="button" value="TW Unicode" name="B2" onclick="BIGtoGB=1;toCode()">
+              <input type="button" value="CN GB" name="B3" onclick="BIGtoGB=2;toCode()">
+              <input type="button" value="TW BIG" name="B4" onclick="BIGtoGB=3;toCode()">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="checkbox" id="C1" name="C1" value="ON">HTML<br>
+              <textarea rows="7" id="S2" name="S2" cols="60" style="font-size:12pt"></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
 
-function toCode(){
-	var TempStr = "";
-	var TempStr1 = "";
-	var TempStrWord = "";
-	var TempWordMath = 0;
-	var TempWordHex = new Array();
-	if(document.myForm.C1.checked){
-		document.getElementById("p1").innerHTML = document.myForm.S1.value;
-		TempStrWord = document.getElementById("p1").innerText;
-	}else{
-		TempStrWord = document.myForm.S1.value;
-	}
-	for(i=0;i<TempStrWord.length;i++){
-		TempStr1 = TempStrWord.charAt(i);
-		TempWordMath = TempStr1.charCodeAt(0);
-		switch(BIGtoGB){
-		case 0:
-			if(!toGB[TempWordMath]){
-				TempStr += TempStr1;
-			}else{
-				TempStr += String.fromCharCode(toGB[TempWordMath]);
-			}
-			break;
-		case 1:
-			if(!toBIG[TempWordMath]){
-				TempStr += TempStr1;
-			}else{
-				TempStr += String.fromCharCode(toBIG[TempWordMath]);
-			}
-			break;
-		case 2:
-			if(!toGB2[TempWordMath]){
-				TempStr += TempStr1;
-			}else{
-				TempStr += toGB2[TempWordMath];
-			}
-			break;
-		case 3:
-			if(!toBIG2[TempWordMath]){
-				TempStr += TempStr1;
-			}else{
-				TempStr += toBIG2[TempWordMath];
-			}
-			break;
-		}
-	}
-	document.myForm.S2.value = TempStr;
-}
-//--></script> 
+  <div id="p1" style="display:none"></div>
 
+  <!-- 請確保以下 .js 檔名與你資料夾入面嘅實際檔名一致（建議去掉「.下載」） -->
+  <script src="./Big5 to GB_files/GB2312TOBIG5.js"></script>
+  <script src="./Big5 to GB_files/GBCodeUnicode.js"></script>
+  <script src="./Big5 to GB_files/GB2312TOBIGGB.js"></script>
+  <script src="./Big5 to GB_files/BIG5TOGB2312.js"></script>
+  <script src="./Big5 to GB_files/BIGCodeUnicode.js"></script>
+  <script src="./Big5 to GB_files/BIG5TOGBBIG.js"></script>
 
+  <script>
+    var BIGtoGB = 0;
 
+    function toCode() {
+      var TempStr = "";
+      var TempStr1 = "";
+      var TempStrWord = "";
+      var TempWordMath = 0;
 
-</body></html>
+      var s1El = document.getElementById("S1");
+      var s2El = document.getElementById("S2");
+      var c1El = document.getElementById("C1");
+      var p1El = document.getElementById("p1");
+
+      if (c1El.checked) {
+        p1El.innerHTML = s1El.value;
+        TempStrWord = p1El.innerText;
+      } else {
+        TempStrWord = s1El.value;
+      }
+
+      for (var i = 0; i < TempStrWord.length; i++) {
+        TempStr1 = TempStrWord.charAt(i);
+        TempWordMath = TempStr1.charCodeAt(0);
+
+        switch (BIGtoGB) {
+          case 0:
+            TempStr += (!window.toGB || !toGB[TempWordMath]) ? TempStr1 : String.fromCharCode(toGB[TempWordMath]);
+            break;
+          case 1:
+            TempStr += (!window.toBIG || !toBIG[TempWordMath]) ? TempStr1 : String.fromCharCode(toBIG[TempWordMath]);
+            break;
+          case 2:
+            TempStr += (!window.toGB2 || !toGB2[TempWordMath]) ? TempStr1 : toGB2[TempWordMath];
+            break;
+          case 3:
+            TempStr += (!window.toBIG2 || !toBIG2[TempWordMath]) ? TempStr1 : toBIG2[TempWordMath];
+            break;
+        }
+      }
+
+      s2El.value = TempStr;
+    }
+  </script>
+</body>
+</html>
