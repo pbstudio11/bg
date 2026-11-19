@@ -6,6 +6,9 @@
 </head>
 <body>
   <div align="center">
+    <!-- 改返你張圖嘅實際路徑同想要嘅 width / height -->
+    <img src="./Big to GB/bn01.gif" width="229" height="85" border="0" style="max-width:100%; height:auto;" alt="Logo"><br>
+
     <form id="myForm" onsubmit="return false;">
       <table border="0" width="600" id="table1">
         <tbody>
@@ -29,13 +32,13 @@
 
   <div id="p1" style="display:none"></div>
 
-  <!-- 請確保以下 .js 檔名與你資料夾入面嘅實際檔名一致（建議去掉「.下載」） -->
-  <script src="./Big5 to GB/GB2312TOBIG5.js"></script>
-  <script src="./Big5 to GB/GBCodeUnicode.js"></script>
-  <script src="./Big5 to GB/GB2312TOBIGGB.js"></script>
-  <script src="./Big5 to GB/BIG5TOGB2312.js"></script>
-  <script src="./Big5 to GB/BIGCodeUnicode.js"></script>
-  <script src="./Big5 to GB/BIG5TOGBBIG.js"></script>
+  <!-- 確保 BIGCodeUnicode.js 在 BIG5TOGBBIG.js 之前載入 -->
+  <script src="./Big5 to GB_files/BIGCodeUnicode.js"></script>
+  <script src="./Big5 to GB_files/BIG5TOGBBIG.js"></script>
+  <script src="./Big5 to GB_files/GB2312TOBIG5.js"></script>
+  <script src="./Big5 to GB_files/GBCodeUnicode.js"></script>
+  <script src="./Big5 to GB_files/GB2312TOBIGGB.js"></script>
+  <script src="./Big5 to GB_files/BIG5TOGB2312.js"></script>
 
   <script>
     var BIGtoGB = 0;
@@ -64,16 +67,16 @@
 
         switch (BIGtoGB) {
           case 0:
-            TempStr += (!window.toGB || !toGB[TempWordMath]) ? TempStr1 : String.fromCharCode(toGB[TempWordMath]);
+            TempStr += (window.toGB && toGB[TempWordMath]) ? String.fromCharCode(toGB[TempWordMath]) : TempStr1;
             break;
           case 1:
-            TempStr += (!window.toBIG || !toBIG[TempWordMath]) ? TempStr1 : String.fromCharCode(toBIG[TempWordMath]);
+            TempStr += (window.toBIG && toBIG[TempWordMath]) ? String.fromCharCode(toBIG[TempWordMath]) : TempStr1;
             break;
           case 2:
-            TempStr += (!window.toGB2 || !toGB2[TempWordMath]) ? TempStr1 : toGB2[TempWordMath];
+            TempStr += (window.toGB2 && toGB2[TempWordMath]) ? toGB2[TempWordMath] : TempStr1;
             break;
           case 3:
-            TempStr += (!window.toBIG2 || !toBIG2[TempWordMath]) ? TempStr1 : toBIG2[TempWordMath];
+            TempStr += (window.toBIG2 && toBIG2[TempWordMath]) ? toBIG2[TempWordMath] : TempStr1;
             break;
         }
       }
